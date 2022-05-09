@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb";
 import db from "../database.js";
 
 const getUser = async (req, res) => {
-    const { userId } = req.headers;
+    const { userId } = res.locals;
     try {
         const user = await db
             .collection("users")
@@ -18,7 +18,7 @@ const getUser = async (req, res) => {
 };
 
 const postTransfer = async (req, res) => {
-    const { userId } = req.headers;
+    const { userId } = res.locals;
     console.log(userId);
     try {
         await db.collection("transfers").insertOne({
@@ -34,7 +34,7 @@ const postTransfer = async (req, res) => {
 };
 
 const getTransfers = async (req, res) => {
-    const { userId } = req.headers;
+    const { userId } = res.locals;
     try {
         const transfers = await db
             .collection("transfers")

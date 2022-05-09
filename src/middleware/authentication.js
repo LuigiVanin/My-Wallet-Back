@@ -1,3 +1,4 @@
+import { response } from "express";
 import db from "../database.js";
 import { tokenSchema } from "../helpers/schemas.js";
 
@@ -12,8 +13,7 @@ const authentication = async (req, res, next) => {
     if (!session) {
         return res.status(401).send({ token: "Token inexistente" });
     }
-    console.log(session);
-    req.headers["userId"] = session.userId;
+    res.locals.userId = session.userId;
     next();
 };
 

@@ -52,4 +52,16 @@ const signIn = async (req, res) => {
     }
 };
 
+// const logOut = async (req, res) => {
+//     let { authentication: token } = req.headers;
+//     token = token.replace("Bearer", "").trim();
+//     try {
+//         await db.collection("sessions").deleteOne({ token });
+//         return res.sendStatus(204);
+//     } catch (err) {
+//         console.log("Erro não esperado!", err);
+//         return res.sendStatus(500);
+//     }
+// };
+
 export { signUp, signIn };
